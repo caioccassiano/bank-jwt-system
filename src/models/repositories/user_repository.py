@@ -42,3 +42,5 @@ class UserRepository:
     
     ''', (new_balance, user_id)
     )
+
+    self.__conn.commit()
