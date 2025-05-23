@@ -1,6 +1,7 @@
 from sqlite3 import Connection
+from src.models.interface.user_repository_interface import UserRepositoryInterface
 
-class UserRepository:
+class UserRepository(UserRepositoryInterface):
   def __init__(self, conn:Connection )-> None:
     self.__conn = conn
 
@@ -17,11 +18,11 @@ class UserRepository:
 
     self.__conn.commit()
 
-  def get_user_by_name(self, username:str):
+  def get_user_by_name(self, username:str)-> tuple[int, str, str]:
     cursor = self.__conn.cursor()
     cursor.execute(
       '''
-      SELECT id, username, password, balance
+      SELECT id, username, password
       FROM users
       WHERE username = ?
 
