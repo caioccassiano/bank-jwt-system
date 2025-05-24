@@ -55,7 +55,7 @@ def test_get_user_by_username():
   mock_connection = MockConnection()
   repo = UserRepository(mock_connection)
 
-  repo.get_user_by_name(username=username)
+  repo.get_user_by_username(username=username)
 
   cursor = mock_connection.cursor.return_value
 
